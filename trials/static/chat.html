@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function getBotResponse() {
+            var rawText = $("#userInput").val();
+            var userText = rawText.replace(/[^\w\s]/gi, '');
+            $.get("/get?msg=" + userText, function(data) {
+                $("#botResponse").html(data);
+            });
+            $("#userInput").val("");
+        }
+    </script>
+</head>
+<body>
+    <div id="chatbox">
+        <p>User: <span id="userInput"></span></p>
+        <p>Bot: <span id="botResponse"></span></p>
+    </div>
+    <input type="text" id="userInput" placeholder="Enter your message here"></input>
+    <button onclick="getBotResponse()">Send</button>
+</body>
+</html>

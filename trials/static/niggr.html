@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        /* Add some styling for the chat interface */
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+        .chat-container {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .chat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        .chat-header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .chat-header i {
+            cursor: pointer;
+        }
+        .chat-messages {
+            height: 70vh;
+            overflow-y: scroll;
+            padding: 15px;
+        }
+        .chat-messages::-webkit-scrollbar {
+            width: 8px;
+        }
+        .chat-messages::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            background-color: #ccc;
+        }
+        .chat-message {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .chat-message.bot img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        .chat-message.user img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-left: 15px;
+        }
+        .chat-message p {
+            padding: 10px;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+        .chat-message.bot p {
+            background-color: #e6e6e6;
+        }
+        .chat-input {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-top: 1px solid #eee;
+        }
+        .chat-input input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 25px;
+        }
+        .chat-input button {
+            background-color: #4CAF50;
+            color:        white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    </style>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        function getBotResponse() {
+          var rawText = $("#textInput").val();
+          var userHtml = '<p class="userText"><span>' + rawText + '</span></p>';
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+          document.getElementById('userInput').scrollIntoView({block: 'start', behavior: 'smooth'}
+    </script>
+</head>
+  <body>
+<div class="chat-container">
+    <div class="chat-header">
+        <h2>Chatbot</h2>
+        <i class="material-icons">close</i>
+    </div>
+    <div class="chat-messages">
+        <div class="chat-message bot">
+            <img src="https://pbs.twimg.com/media/CZAcurIWcAEZ_OC.jpg" alt="bot-avatar">
+            <p>Hello! How can I help you today?</p>
+          <p></p><span id="botResponse"></span></p>
+        </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="userInput" placeholder="Enter your message here"></input>
+      <button onclick="getbotResponse()">Send</button>
+    </div>
+</div>
+  </body>
+</html>
